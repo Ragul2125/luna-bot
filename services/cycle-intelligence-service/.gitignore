@@ -1,0 +1,13 @@
+# cycle-intelligence-service Git Ignore
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+logs/
+*.log
