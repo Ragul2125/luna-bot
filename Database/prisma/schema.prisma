@@ -40,14 +40,14 @@ model CycleLog {
   createdAt   DateTime @default(now())
 
   user        User              @relation(fields: [userId], references: [id])
-  prediction  CyclePrediction?
+  predictions CyclePrediction[]
 
   @@map("cycle_logs")
 }
 
 model CyclePrediction {
   id                   String   @id @default(uuid())
-  cycleLogId           String   @unique
+  cycleLogId           String
   predictedPeriodStart DateTime
   predictedPeriodEnd   DateTime?
   ovulationDate        DateTime

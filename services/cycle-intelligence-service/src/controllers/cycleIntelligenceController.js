@@ -1,6 +1,6 @@
-import { predictCycleWithPhasesService } from "../services/cycleIntelligenceService.js";
+import { logPeriodAndPredictService } from "../services/cycleIntelligenceService.js";
 
-export const predictCycleController = async (req, res) => {
+export const logPeriodController = async (req, res) => {
   try {
     const {
       userId,
@@ -31,7 +31,7 @@ export const predictCycleController = async (req, res) => {
       });
     }
 
-    const length = parseInt(cycleLength);
+    const length = parseInt(cycleLength, 10);
     if (isNaN(length) || length < 21 || length > 45) {
       return res.status(400).json({
         error: "Cycle length must be between 21–45",
@@ -39,7 +39,7 @@ export const predictCycleController = async (req, res) => {
     }
 
     // ✅ service call
-    const result = await predictCycleWithPhasesService(
+    const result = await logPeriodAndPredictService(
       userId,
       lastPeriodStartDate,
       lastPeriodEndDate,
@@ -47,7 +47,7 @@ export const predictCycleController = async (req, res) => {
     );
 
     return res.status(200).json({
-      message: "Prediction successful",
+      message: "Period logged and cycles predicted successfully",
       data: result,
     });
   } catch (error) {

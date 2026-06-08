@@ -1,7 +1,7 @@
 import express from "express";
-import { predictCycleController } from "../controllers/cycleIntelligenceController.js";
+import { logPeriodController } from "../controllers/cycleIntelligenceController.js";
 const router = express.Router();
 
-router.post("/predict-cycle", predictCycleController);
+router.post("/log-period", logPeriodController);
 
 export default router;
