@@ -27,3 +27,14 @@ export const createUser = async (userData) => {
     });
 };
 
+export const updateUserOnboarded = async (userId, onboarded) => {
+    if (!userId || typeof userId !== 'string') {
+        throw new Error("Database validation error: Valid user ID must be provided for updates.");
+    }
+    return prisma.user.update({
+        where: { id: userId },
+        data: { onboarded }
+    });
+};
+
+

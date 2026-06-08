@@ -1,5 +1,6 @@
 import { createCyclePrediction, createCycleLog } from "../repositories/cyclePredictionRepository.js";
 import { createCyclePhases } from "../repositories/cyclePhaseRepository.js";
+import { updateUserOnboarded } from "../repositories/userRepository.js";
 
 export const logPeriodAndPredictService = async (
   userId,
@@ -14,6 +15,9 @@ export const logPeriodAndPredictService = async (
       periodEnd: lastPeriodEndDate,
       cycleLength
     });
+
+    // 2. Mark the user as onboarded
+    await updateUserOnboarded(userId, true);
 
     const results = [];
     let currentStartDate = new Date(lastPeriodStartDate);
