@@ -21,6 +21,7 @@ model User {
   whatsappNumber     String   @unique
   age                Int?
   insightPreferences String?
+  onboarded          Boolean  @default(false)
   createdAt          DateTime @default(now())
 
   cycleLogs     CycleLog[]
