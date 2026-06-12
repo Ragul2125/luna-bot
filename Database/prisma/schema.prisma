@@ -21,6 +21,7 @@ model User {
   whatsappNumber     String   @unique
   age                Int?
   insightPreferences String?
+  onboarded          Boolean  @default(false)
   createdAt          DateTime @default(now())
 
   cycleLogs     CycleLog[]
@@ -40,14 +41,14 @@ model CycleLog {
   createdAt   DateTime @default(now())
 
   user        User              @relation(fields: [userId], references: [id])
-  prediction  CyclePrediction?
+  predictions CyclePrediction[]
 
   @@map("cycle_logs")
 }
 
 model CyclePrediction {
   id                   String   @id @default(uuid())
-  cycleLogId           String   @unique
+  cycleLogId           String
   predictedPeriodStart DateTime
   predictedPeriodEnd   DateTime?
   ovulationDate        DateTime

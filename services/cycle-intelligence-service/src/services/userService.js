@@ -44,3 +44,20 @@ export const getUserService = async (whatsappNumber) => {
         throw error;
     }
 };
+
+export const getUserOnboardingStatusService = async (whatsappNumber) => {
+    try {
+        if (!whatsappNumber || typeof whatsappNumber !== 'string') {
+            throw new Error("Validation failed: WhatsApp number is required.");
+        }
+        const user = await getUserByWhatsappNumber(whatsappNumber);
+        if (!user) {
+             throw new Error("User not found");
+        }
+        return {
+             onboarded: user.onboarded
+        };
+    } catch (error) {
+        throw error;
+    }
+};

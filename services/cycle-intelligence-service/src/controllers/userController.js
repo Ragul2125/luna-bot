@@ -1,4 +1,4 @@
-import { createUserService , getUserService} from "../services/userService.js";
+import { createUserService, getUserService, getUserOnboardingStatusService } from "../services/userService.js";
 
 const validateCreateUserRequest = (data) => {
     const { name, age, whatsappNumber, insightPreferences } = data;
@@ -73,6 +73,26 @@ export const getUserController = async (req, res) => {
 
         return res.status(200).json({"message":"User fetched successfully", user});
     } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+export const getUserOnboardingStatusController = async (req, res) => {
+    try {
+        const { whatsappNumber } = req.params;
+        if (!whatsappNumber) {
+            return res.status(400).json({ error: "WhatsApp number is required." });
+        }
+
+        const status = await getUserOnboardingStatusService(whatsappNumber.trim());
+        return res.status(200).json({
+            message: "User onboarding status fetched successfully",
+            data: status
+        });
+    } catch (error) {
+        if (error.message === "User not found") {
+            return res.status(404).json({ error: error.message });
+        }
         return res.status(500).json({ error: error.message });
     }
 };

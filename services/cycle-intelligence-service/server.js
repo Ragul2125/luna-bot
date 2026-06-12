@@ -6,3 +6,6 @@ const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {
   console.log(`cycle-intelligence-service running on port ${PORT}`);
 });
+
+// Restart server to reload generated Prisma Client
+
