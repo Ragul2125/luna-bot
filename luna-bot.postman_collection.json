@@ -1,0 +1,163 @@
+{
+  "info": {
+    "name": "Luna Bot API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jane Doe\",\n  \"whatsappNumber\": \"+12345678900\",\n  \"age\": 25,\n  \"insightPreferences\": \"daily\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4001/api/user",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4001",
+          "path": [
+            "api",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "name": "2. Predict Cycle",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"PASTE_USER_ID_HERE\",\n  \"lastPeriodStartDate\": \"2026-06-01\",\n  \"lastPeriodEndDate\": \"2026-06-05\",\n  \"cycleLength\": 28\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4001/api/cycle-intelligence/predict-cycle",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4001",
+          "path": [
+            "api",
+            "cycle-intelligence",
+            "predict-cycle"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. Log Sleep",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"PASTE_USER_ID_HERE\",\n  \"sleepDate\": \"2026-06-08\",\n  \"sleepHours\": 8.0\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4001/api/sleep-logs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4001",
+          "path": [
+            "api",
+            "sleep-logs"
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Log Daily Status",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"PASTE_USER_ID_HERE\",\n  \"logDate\": \"2026-06-08\",\n  \"recommendationSent\": \"Focus on rest and hydration.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4001/api/daily-logs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4001",
+          "path": [
+            "api",
+            "daily-logs"
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Get Sleep Logs for User",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4001/api/sleep-logs/user/PASTE_USER_ID_HERE",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4001",
+          "path": [
+            "api",
+            "sleep-logs",
+            "user",
+            "PASTE_USER_ID_HERE"
+          ]
+        }
+      }
+    },
+    {
+      "name": "6. Get Daily Logs for User",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4001/api/daily-logs/user/PASTE_USER_ID_HERE",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4001",
+          "path": [
+            "api",
+            "daily-logs",
+            "user",
+            "PASTE_USER_ID_HERE"
+          ]
+        }
+      }
+    }
+  ]
+}

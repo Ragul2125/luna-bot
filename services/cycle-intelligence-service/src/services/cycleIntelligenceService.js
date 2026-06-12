@@ -39,7 +39,7 @@ export const logPeriodAndPredictService = async (
 
       const subsequentStart = new Date(nextStart);
       subsequentStart.setDate(subsequentStart.getDate() + cycleLength);
-      
+
       const ovulation = new Date(subsequentStart);
       ovulation.setDate(ovulation.getDate() - 14);
 
@@ -95,7 +95,7 @@ export const logPeriodAndPredictService = async (
       });
 
       await createCyclePhases(cycle.id, phases);
-      
+
       results.push({
         cycle,
         phases,
