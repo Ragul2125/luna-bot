@@ -20,6 +20,7 @@ export const predictCycleWithPhasesService = async (
       // ✅ determine next start date and preceding log start date
       let nextStart;
       let prevStartDate;
+
       
       if (i === 0) {
         nextStart = new Date(currentStartDate);
@@ -34,7 +35,6 @@ export const predictCycleWithPhasesService = async (
       const nextEnd = new Date(nextStart);
       nextEnd.setDate(nextEnd.getDate() + periodDuration);
 
-      // ✅ ovulation (occurs 14 days before the next subsequent period starts)
       const subsequentStart = new Date(nextStart);
       subsequentStart.setDate(subsequentStart.getDate() + cycleLength);
       
